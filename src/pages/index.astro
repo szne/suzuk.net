@@ -1,5 +1,18 @@
 ---
+// asyncフロントマター
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
+const all: CollectionEntry<"journal">[] = await getCollection("journal");
+const journal = all
+	.sort(
+		(a: CollectionEntry<"journal">, b: CollectionEntry<"journal">) =>
+			new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+	)
+	.filter((item: CollectionEntry<"journal">) => {
+		const year = new Date(item.data.date).getFullYear();
+		return year >= 2023; // 過去3年に絞る
+	});
 ---
 
 <html lang="en">
@@ -7,7 +20,7 @@
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
+		<!-- <meta name="generator" content={Astro.generator} /> -->
 		<title>Kohei Suzuki – Portfolio</title>
 	</head>
 	<body>
@@ -15,15 +28,10 @@
 			<section>
 				<h2 id="about">About me</h2>
 				<h3>鈴木 康平 - Kohei Suzuki</h3>
-				<p>2005/01/04</p>
 				<p>
-					I'm a third-year Information Engineering student at Tokyo
-					University of Science. I’m into machine learning, data
-					science, and financial engineering—though most of my trading
-					algorithms collapse in backtests. I love prototyping new
-					ideas (finishing them is another story), staring at datasets
-					for fun, and managing large-scale events as part of a
-					Japanese dance team. Bugs are friends, deadlines are not.
+					Third-year Information Engineering student working across
+					ML, data, and finance. I like fast prototypes and clean
+					trade-offs. <a href="/about">Read more →</a>
 				</p>
 			</section>
 			<section id="skills">
@@ -83,67 +91,37 @@
 				</div>
 			</section>
 			<section id="journal">
-				<h2>Timeline</h2>
-				<div class="year" aria-labelledby="y2025">
-					<h3 id="y2025">2025</h3>
-					<ul>
-						<li
-							data-date="2025-09"
-							data-type="work"
-							data-tags="ml,astro"
-						>
-							<time datetime="2025-09">Sep</time> — <strong
-								>[Dummy project]</strong
-							>
-						</li>
-						<li
-							data-date="2025-07"
-							data-type="leadership"
-							data-tags="event,team"
-						>
-							<time datetime="2025-07">Jul</time> — <strong
-								>[Dummy leadership role]</strong
-							>
-						</li>
-					</ul>
-				</div>
-				<div class="year" aria-labelledby="y2024">
-					<h3 id="y2024">2024</h3>
-					<ul>
-						<li
-							data-date="2024-11"
-							data-type="work"
-							data-tags="finance,python"
-						>
-							<time datetime="2024-11">Nov</time> — <strong
-								>[Dummy work]</strong
-							>
-						</li>
-						<li
-							data-date="2024-05"
-							data-type="activity"
-							data-tags="club,event"
-						>
-							<time datetime="2024-05">May</time> — <strong
-								>[Dummy activity]</strong
-							>
-						</li>
-					</ul>
-				</div>
-				<div class="year" aria-labelledby="y2023">
-					<h3 id="y2023">2023</h3>
-					<ul>
-						<li
-							data-date="2023-04"
-							data-type="education"
-							data-tags="univ"
-						>
-							<time datetime="2023-04">Apr</time> — <strong
-								>[Dummy education]</strong
-							>
-						</li>
-					</ul>
-				</div>
+				<h2>Timeline / Journal</h2>
+				<ul>
+					{journal.map((entry) => (
+	<li
+		data-date={entry.data.date}
+		data-type={entry.data.type}
+		data-tags={(entry.data.tags || []).join(",")}
+	>
+		<time datetime={entry.data.date}>
+			{new Date(entry.data.date).toLocaleDateString(
+				"en-US",
+				{ year: "numeric", month: "short" },
+			)}
+		</time>
+		{" — "}
+		<strong>{entry.data.title}</strong>
+		{entry.data.note && (
+			<span class="muted"> — {entry.data.note}</span>
+		)}
+		{entry.data.link && (
+			<a
+				href={entry.data.link}
+				target="_blank"
+				rel="noreferrer"
+			>
+				[link]
+			</a>
+		)}
+	</li>
+))}
+				</ul>
 			</section>
 			<section id="contact">
 				<h2>Contact</h2>

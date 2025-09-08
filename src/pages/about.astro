@@ -5,36 +5,66 @@ import type { CollectionEntry } from "astro:content";
 
 const all: CollectionEntry<"journal">[] = await getCollection("journal");
 const journal = all
-	.sort(
-		(a: CollectionEntry<"journal">, b: CollectionEntry<"journal">) =>
-			new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
-	)
-	.filter((item: CollectionEntry<"journal">) => {
-		const year = new Date(item.data.date).getFullYear();
-		return year >= 2023; // 過去3年に絞る
-	});
+    .sort(
+        (a: CollectionEntry<"journal">, b: CollectionEntry<"journal">) =>
+            new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+    )
+    .filter((item: CollectionEntry<"journal">) => {
+        const year = new Date(item.data.date).getFullYear();
+        return year >= 2023; // 過去3年に絞る
+    });
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<!-- <meta name="generator" content={Astro.generator} /> -->
-		<title>Kohei Suzuki – Portfolio</title>
-	</head>
-	<body>
-		<main>
-			<section>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <!-- <meta name="generator" content={Astro.generator} /> -->
+        <title>Kohei Suzuki – Portfolio</title>
+    </head>
+    <body>
+        <main>
+            <section>
                 <a href="/">Back</a>
-				<h1 id="about">About me</h1>
-				<h2>鈴木 康平 - Kohei Suzuki</h2>
-				<p>
-					Third-year Information Engineering student working across
-					ML, data, and finance. I like fast prototypes and clean
-					trade-offs. 
-				</p>
-			</section>
-		</main>
-	</body>
+                <h1 id="about">About</h1>
+                <p>
+                    Kohei Suzuki is a third-year Information Engineering student
+                    at Tokyo University of Science, fascinated by machine
+                    learning, data science, and financial engineering. He
+                    prototypes faster than he finishes, and most of his trading
+                    algorithms politely remind him that money is harder than
+                    math.
+                </p>
+                <p>
+                    He spends his time tinkering with AI-powered tools, building
+                    bots that automate more than they should, and turning class
+                    projects into half-serious research experiments. Deadlines
+                    are his natural habitat — sometimes academic, sometimes
+                    entrepreneurial.
+                </p>
+                <h2>Outside of work</h2>
+                <p>
+                    He’s part of the leadership team of a 110-member Yosakoi
+                    dance club, where annual festival performances draw over
+                    1,000 spectators. It’s less like coding and more like
+                    debugging with drums and costumes. He enjoys driving,
+                    traveling, and staring at maps while imagining new
+                    infrastructures (roads deserve refactoring too).
+                </p>
+                <h3>Contact</h3>
+                <p>
+                    Reach out on <a href="mailto:contact@suzuk.net">Email</a>, <a
+                        href="https://github.com/szne"
+                        target="_blank"
+                        rel="noreferrer">GitHub</a
+                    > or <a
+                        href="https://www.linkedin.com/in/kohei-suzuki-0060092b7"
+                        target="_blank"
+                        rel="noreferrer">LinkedIn</a
+                    >.
+                </p>
+            </section>
+        </main>
+    </body>
 </html>

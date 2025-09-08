@@ -1,4 +1,5 @@
 ---
+import Layout from "../layouts/Layout.astro";
 // asyncフロントマター
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
@@ -15,56 +16,45 @@ const journal = all
     });
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="viewport" content="width=device-width" />
-        <!-- <meta name="generator" content={Astro.generator} /> -->
-        <title>Kohei Suzuki – Portfolio</title>
-    </head>
-    <body>
-        <main>
-            <section>
-                <a href="/">Back</a>
-                <h1 id="about">About</h1>
-                <p>
-                    Kohei Suzuki is a third-year Information Engineering student
-                    at Tokyo University of Science, fascinated by machine
-                    learning, data science, and financial engineering. He
-                    prototypes faster than he finishes, and most of his trading
-                    algorithms politely remind him that money is harder than
-                    math.
-                </p>
-                <p>
-                    He spends his time tinkering with AI-powered tools, building
-                    bots that automate more than they should, and turning class
-                    projects into half-serious research experiments. Deadlines
-                    are his natural habitat — sometimes academic, sometimes
-                    entrepreneurial.
-                </p>
-                <h2>Outside of work</h2>
-                <p>
-                    He’s part of the leadership team of a 110-member Yosakoi
-                    dance club, where annual festival performances draw over
-                    1,000 spectators. It’s less like coding and more like
-                    debugging with drums and costumes. He enjoys driving,
-                    traveling, and staring at maps while imagining new
-                    infrastructures (roads deserve refactoring too).
-                </p>
-                <h3>Contact</h3>
-                <p>
-                    Reach out on <a href="mailto:contact@suzuk.net">Email</a>, <a
-                        href="https://github.com/szne"
-                        target="_blank"
-                        rel="noreferrer">GitHub</a
-                    > or <a
-                        href="https://www.linkedin.com/in/kohei-suzuki-0060092b7"
-                        target="_blank"
-                        rel="noreferrer">LinkedIn</a
-                    >.
-                </p>
-            </section>
-        </main>
-    </body>
-</html>
+<Layout
+    title="Kohei Suzuki – About"
+    description="ML, data, and finance — fast prototypes and clean trade-offs."
+>
+    <section>
+        <a href="/">Back</a>
+        <h2>About</h1>
+        <p>
+            Kohei Suzuki is a third-year Information Engineering student at
+            Tokyo University of Science, fascinated by machine learning, data
+            science, and financial engineering. He prototypes faster than he
+            finishes, and most of his trading algorithms politely remind him
+            that money is harder than math.
+        </p>
+        <p>
+            He spends his time tinkering with AI-powered tools, building bots
+            that automate more than they should, and turning class projects into
+            half-serious research experiments. Deadlines are his natural habitat
+            — sometimes academic, sometimes entrepreneurial.
+        </p>
+        <h2>Outside of work</h2>
+        <p>
+            He’s part of the leadership team of a 100-member Yosakoi dance club,
+            where annual festival performances draw over 1,000 spectators. It’s
+            less like coding and more like debugging with "naruko" and costumes. He
+            enjoys driving, traveling, and staring at maps while imagining new
+            infrastructures (roads deserve refactoring too).
+        </p>
+        <h2>Contact</h3>
+        <p>
+            Reach out on <a href="mailto:contact@suzuk.net">Email</a>, <a
+                href="https://github.com/szne"
+                target="_blank"
+                rel="noreferrer">GitHub</a
+            > or <a
+                href="https://www.linkedin.com/in/kohei-suzuki-0060092b7"
+                target="_blank"
+                rel="noreferrer">LinkedIn</a
+            >.
+        </p>
+    </section>
+</Layout>

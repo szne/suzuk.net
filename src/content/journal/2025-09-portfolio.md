@@ -1,5 +1,5 @@
 ---
-title: "Portfolio site v1"
+title: "suzuk.net"
 date: "2025-09-01"
 type: "work"
 tags: ["astro","web"]

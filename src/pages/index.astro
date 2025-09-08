@@ -1,4 +1,5 @@
 ---
+import Layout from "../layouts/Layout.astro";
 // asyncフロントマター
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
@@ -11,149 +12,146 @@ const journal = all
 	)
 	.filter((item: CollectionEntry<"journal">) => {
 		const year = new Date(item.data.date).getFullYear();
-		return year >= 2023; // 過去3年に絞る
+		return year;
+		// return year >= 2023; // 過去3年に絞る
 	});
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<!-- <meta name="generator" content={Astro.generator} /> -->
-		<title>Kohei Suzuki – Portfolio</title>
-	</head>
-	<body>
-		<main>
-			<section>
-				<h2 id="about">About me</h2>
-				<h3>鈴木 康平 - Kohei Suzuki</h3>
-				<p>
-					Third-year Information Engineering student working across
-					ML, data, and finance. I like fast prototypes and clean
-					trade-offs. <a href="/about">Read more →</a>
-				</p>
-			</section>
-			<section id="skills">
-				<h2>Skills</h2>
-				<div>
-					<h3>Tech</h3>
-					<ul>
-						<li>Languages: C, Python, TypeScript</li>
-						<li>Frameworks: Astro, React, FastAPI</li>
-						<li>Data/ML: PyTorch, Statistics</li>
-						<li>Ops: Git, Docker, Linux (fish shell)</li>
-					</ul>
-				</div>
-				<div>
-					<h3>Soft-ish</h3>
-					<ul>
-						<li>
-							Event organization / leadership (1000+ participants)
-						</li>
-						<li>
-							Communication: Japanese (Native) / English / Chinese
-						</li>
-						<li>
-							Working with AI: effective use of GPT for
-							prototyping and automation — also good friends with
-							GPT
-						</li>
-					</ul>
-				</div>
-				<div>
-					<h3>Weaknesses</h3>
-					<details>
-						<summary>Click to reveal (spoilers ahead)</summary>
-						<ul>
-							<li>
-								More productive in the evening than in the
-								morning
-							</li>
-							<li>
-								Can get deeply absorbed in tasks, sometimes too
-								much
-							</li>
-							<li>
-								Likes to explore new environments (regular
-								travel helps me recharge)
-							</li>
-							<li>
-								Eager to move fast from prototype to the next
-								challenge
-							</li>
-							<li>
-								Often generates too many ideas and has to
-								prioritize carefully (according to ChatGPT)
-							</li>
-						</ul>
-					</details>
-				</div>
-			</section>
-			<section id="journal">
-				<h2>Timeline / Journal</h2>
+<Layout
+	title="Kohei Suzuki – Portfolio"
+	description="ML, data, and finance — fast prototypes and clean trade-offs."
+>
+	<!-- About -->
+	<section>
+		<h2 id="about">About me</h2>
+		<h3 class="text-zinc-600 dark:text-zinc-400">
+			鈴木 康平 - Kohei Suzuki
+		</h3>
+		<p>
+			Third-year Information Engineering student working across ML, data,
+			and finance. I like fast prototypes and clean trade-offs.
+			<br /><a href="/about">Read more →</a>
+		</p>
+	</section>
+
+	<!-- Skills -->
+	<section id="skills">
+		<h2>Skills</h2>
+
+		<div>
+			<h3 class="font-medium">Tech</h3>
+			<ul>
+				<li>Languages: C, Python, TypeScript</li>
+				<li>Frameworks: Astro, React, FastAPI</li>
+				<li>Data/ML: PyTorch, Statistics</li>
+				<li>Ops: Git, Docker, Linux (fish shell)</li>
+			</ul>
+		</div>
+
+		<div>
+			<h3 class="font-medium">Soft-ish</h3>
+			<ul>
+				<li>Event organization / leadership (1000+ participants)</li>
+				<li>Communication: Japanese (Native) / English / Chinese</li>
+				<li>
+					Working with AI: effective use of GPT for prototyping and
+					automation — also good friends with GPT
+				</li>
+			</ul>
+		</div>
+
+		<div>
+			<h3 class="font-medium">Weaknesses</h3>
+			<details>
+				<summary class="cursor-pointer">
+					Click to reveal (spoilers ahead)
+				</summary>
 				<ul>
-					{
-						journal.map((entry) => (
-							<li
-								data-date={entry.data.date}
-								data-type={entry.data.type}
-								data-tags={(entry.data.tags || []).join(",")}
-							>
-								<time datetime={entry.data.date}>
-									{new Date(
-										entry.data.date,
-									).toLocaleDateString("ja-JP", {
-										year: "numeric",
-										month: "2-digit",
-									})}
-								</time>
-								{" — "}
-								<strong>{entry.data.title}</strong>
-								{entry.data.note && (
-									<span class="muted">
-										{" "}
-										— {entry.data.note}
-									</span>
-								)}
-								{entry.data.link && (
-									<a
-										href={entry.data.link}
-										target="_blank"
-										rel="noreferrer"
-									>
-										[link]
-									</a>
-								)}
-							</li>
-						))
-					}
-				</ul>
-			</section>
-			<section id="contact">
-				<h2>Contact</h2>
-				<ul>
-					<li>📧 <a href="mailto:contact@suzuk.net">contact@suzuk.net</a></li>
+					<li>More productive in the evening than in the morning</li>
 					<li>
-						💻 <a
-							href="https://github.com/szne"
-							target="_blank"
-							rel="noreferrer">GitHub</a
-						>
+						Can get deeply absorbed in tasks, sometimes too much
 					</li>
 					<li>
-						🔗 <a
-							href="https://www.linkedin.com/in/kohei-suzuki-0060092b7"
-							target="_blank"
-							rel="noreferrer">LinkedIn</a
-						>
+						Likes to explore new environments (regular travel helps
+						me recharge)
+					</li>
+					<li>
+						Eager to move fast from prototype to the next challenge
+					</li>
+					<li>
+						Often generates too many ideas and has to prioritize
+						carefully (according to ChatGPT)
 					</li>
 				</ul>
-				<p class="small">
-					Bug reports welcome — though they might secretly be
-					"features".
-				</p>
-			</section>
-		</main>
-	</body>
-</html>
+			</details>
+		</div>
+	</section>
+
+	<!-- Journal -->
+	<section id="journal">
+		<h2>Timeline / Journal</h2>
+		<ul>
+			{
+				journal.map((entry) => (
+					<li
+						data-date={entry.data.date}
+						data-type={entry.data.type}
+						data-tags={(entry.data.tags || []).join(",")}
+					>
+						<time datetime={entry.data.date}>
+							{new Date(entry.data.date).toLocaleDateString(
+								"ja-JP",
+								{ year: "numeric", month: "2-digit" },
+							)}
+						</time>
+						{" — "}
+						<strong>{entry.data.title}</strong>
+						{entry.data.note && (
+							<span class="text-zinc-500 dark:text-zinc-400">
+								{" "}
+								— {entry.data.note}
+							</span>
+						)}
+						{entry.data.link && (
+							<>
+								{" "}
+								<a
+									href={entry.data.link}
+									target="_blank"
+									rel="noreferrer"
+								>
+									[link]
+								</a>
+							</>
+						)}
+					</li>
+				))
+			}
+		</ul>
+	</section>
+
+	<!-- Contact -->
+	<section id="contact">
+		<h2>Contact</h2>
+		<ul>
+			<li>📧 <a href="mailto:contact@suzuk.net">contact@suzuk.net</a></li>
+			<li>
+				💻 <a
+					href="https://github.com/szne"
+					target="_blank"
+					rel="noreferrer">GitHub</a
+				>
+			</li>
+			<li>
+				🔗 <a
+					href="https://www.linkedin.com/in/kohei-suzuki-0060092b7"
+					target="_blank"
+					rel="noreferrer">LinkedIn</a
+				>
+			</li>
+		</ul>
+		<p class="text-sm text-zinc-500 dark:text-zinc-400">
+			Bug reports welcome — though they might secretly be “features”.
+		</p>
+	</section>
+</Layout>

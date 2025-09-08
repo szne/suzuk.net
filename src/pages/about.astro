@@ -1,0 +1,40 @@
+---
+// asyncフロントマター
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+const all: CollectionEntry<"journal">[] = await getCollection("journal");
+const journal = all
+	.sort(
+		(a: CollectionEntry<"journal">, b: CollectionEntry<"journal">) =>
+			new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+	)
+	.filter((item: CollectionEntry<"journal">) => {
+		const year = new Date(item.data.date).getFullYear();
+		return year >= 2023; // 過去3年に絞る
+	});
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<!-- <meta name="generator" content={Astro.generator} /> -->
+		<title>Kohei Suzuki – Portfolio</title>
+	</head>
+	<body>
+		<main>
+			<section>
+                <a href="/">Back</a>
+				<h1 id="about">About me</h1>
+				<h2>鈴木 康平 - Kohei Suzuki</h2>
+				<p>
+					Third-year Information Engineering student working across
+					ML, data, and finance. I like fast prototypes and clean
+					trade-offs. 
+				</p>
+			</section>
+		</main>
+	</body>
+</html>

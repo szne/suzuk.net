@@ -1,9 +1,10 @@
 ---
-title: "Portfolio site (Astro) v1"
+title: "Portfolio site v1"
 date: "2025-09-01"
 type: "work"
 tags: ["astro","web"]
-note: "shipped the A-but-almost-B edition"
+note: "A really simple portfolio site."
+link: "https://suzuk.net"
 ---
 
 Portfolio site v1 released.

@@ -1,0 +1,59 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+	const journal = await getCollection("journal");
+
+	return journal.map((entry) => ({
+		params: { slug: entry.slug },
+		props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout
+	title={"Kohei Suzuki - " + entry.data.title}
+	description={entry.data.note}
+>
+	<a href="/">Back</a>
+	<article class="prose dark:prose-invert">
+		<h1 class="flex items-baseline gap-2">
+			<span>{entry.data.title}</span>
+			{
+				entry.data.tags && (
+					<span class="flex gap-1 text-sm text-zinc-500">
+						{entry.data.tags.map((tag) => (
+							<span class="before:content-['#']">{tag}</span>
+						))}
+					</span>
+				)
+			}
+		</h1>
+		<p class="text-sm text-zinc-500">
+			{
+				new Date(entry.data.date).toLocaleDateString("ja-JP", {
+					year: "numeric",
+					month: "2-digit",
+				})
+			}
+			{entry.data.note && " - " + entry.data.note}
+		</p>
+		{
+			entry.data.link && (
+				<p class="text-sm text-zinc-500">
+					🔗:{" "}
+					<a href={entry.data.link} target="_blank" rel="noreferrer">
+						{entry.data.link}
+					</a>
+				</p>
+			)
+		}
+		<p class="text-sm text-zinc-500">---</p>
+		<!-- md本文を表示 -->
+		<Content />
+	</article>
+</Layout>

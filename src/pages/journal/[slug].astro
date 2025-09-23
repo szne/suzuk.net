@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
@@ -44,8 +46,9 @@ const { Content } = await entry.render();
 		</p>
 		{
 			entry.data.link && (
-				<p class="text-sm text-zinc-500">
-					🔗:{" "}
+				<p class="text-sm text-zinc-500 flex items-center gap-1">
+					<Icon name="mdi:link-variant" class="w-4 h-4" />
+					<span>:</span>
 					<a href={entry.data.link} target="_blank" rel="noreferrer">
 						{entry.data.link}
 					</a>
@@ -54,9 +57,15 @@ const { Content } = await entry.render();
 		}
 		{
 			entry.data.git && (
-				<p class="text-sm text-zinc-500">
-					🔗:{" "}
-					<a href={entry.data.git} target="_blank" rel="noreferrer">
+				<p class="text-sm text-zinc-500 flex items-center gap-1">
+					<Icon name="mdi:github" class="w-4 h-4" />
+					<span>:</span>
+					<a
+						href={entry.data.git}
+						target="_blank"
+						rel="noreferrer"
+						class="underline"
+					>
 						GitHub
 					</a>
 				</p>

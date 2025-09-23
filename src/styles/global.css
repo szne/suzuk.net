@@ -30,6 +30,10 @@ ul {
   @apply list-disc pl-5 leading-7;
 }
 
+.contact-list {
+  @apply list-none pl-0 space-y-2;
+}
+
 section {
   @apply space-y-3;
 }

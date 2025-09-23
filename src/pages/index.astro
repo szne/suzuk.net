@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 import Layout from "../layouts/Layout.astro";
 // asyncフロントマター
 import { getCollection } from "astro:content";
@@ -137,17 +139,22 @@ const journal = all
 	<!-- Contact -->
 	<section id="contact">
 		<h2>Contact</h2>
-		<ul>
-			<li>📧 <a href="mailto:contact@suzuk.net">contact@suzuk.net</a></li>
-			<li>
-				💻 <a
+		<ul class="list-none !pl-0">
+			<li class="flex items-center gap-2">
+				<Icon name="mdi:email" class="icon" />
+				<a href="mailto:contact@suzuk.net">contact@suzuk.net</a>
+			</li>
+			<li class="flex items-center gap-2">
+				<Icon name="mdi:github" class="icon" />
+				<a
 					href="https://github.com/szne"
 					target="_blank"
 					rel="noreferrer">GitHub</a
 				>
 			</li>
-			<li>
-				🔗 <a
+			<li class="flex items-center gap-2">
+				<Icon name="mdi:linkedin" class="icon" />
+				<a
 					href="https://www.linkedin.com/in/kohei-suzuki-0060092b7"
 					target="_blank"
 					rel="noreferrer">LinkedIn</a

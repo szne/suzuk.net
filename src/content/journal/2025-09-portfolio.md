@@ -5,6 +5,7 @@ type: "work"
 tags: ["astro","web"]
 note: "A really simple portfolio site."
 link: "https://suzuk.net"
+git: "https://github.com/szne/suzuk.net"
 ---
 
 ## What's this

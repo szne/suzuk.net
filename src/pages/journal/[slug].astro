@@ -52,6 +52,16 @@ const { Content } = await entry.render();
 				</p>
 			)
 		}
+		{
+			entry.data.git && (
+				<p class="text-sm text-zinc-500">
+					🔗:{" "}
+					<a href={entry.data.git} target="_blank" rel="noreferrer">
+						GitHub
+					</a>
+				</p>
+			)
+		}
 		<p class="text-sm text-zinc-500">---</p>
 		<!-- md本文を表示 -->
 		<Content />

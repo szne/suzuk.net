@@ -9,6 +9,7 @@ const journal = defineCollection({
         tags: z.array(z.string()).optional(),
         note: z.string().optional(),   // 補足
         link: z.string().url().optional(),
+        git: z.string().url().optional(),
     }),
 });
 

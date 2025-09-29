@@ -4,7 +4,7 @@ interface Props {
   title?: string;
   description?: string;
 }
-const { title = "Kohei Suzuki – Portfolio", description = "Portfolio of Kohei Suzuki" } = Astro.props;
+const { title = "Kohei Suzuki - Portfolio", description = "Portfolio of Kohei Suzuki" } = Astro.props;
 
 import "../styles/global.css"; // tailwind
 ---
@@ -14,7 +14,7 @@ import "../styles/global.css"; // tailwind
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <title>{title}</title>
     <meta name="description" content={description} />
 

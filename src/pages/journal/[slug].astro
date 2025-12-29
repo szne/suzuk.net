@@ -27,7 +27,7 @@ const { Content } = await entry.render();
 			<span>{entry.data.title}</span>
 			{
 				entry.data.tags && (
-					<span class="flex gap-1 text-sm text-zinc-500">
+					<span class="flex gap-1 text-sm text-zinc-400">
 						{entry.data.tags.map((tag) => (
 							<span class="before:content-['#']">{tag}</span>
 						))}
@@ -35,7 +35,7 @@ const { Content } = await entry.render();
 				)
 			}
 		</h1>
-		<p class="text-sm text-zinc-500">
+		<p class="text-sm text-zinc-400">
 			{
 				new Date(entry.data.date).toLocaleDateString("ja-JP", {
 					year: "numeric",
@@ -46,7 +46,7 @@ const { Content } = await entry.render();
 		</p>
 		{
 			entry.data.link && (
-				<p class="text-sm text-zinc-500 flex items-center gap-1">
+				<p class="text-sm text-zinc-400 flex items-center gap-1">
 					<Icon name="mdi:link-variant" class="w-4 h-4" />
 					<span>:</span>
 					<a href={entry.data.link} target="_blank" rel="noreferrer">
@@ -57,7 +57,7 @@ const { Content } = await entry.render();
 		}
 		{
 			entry.data.git && (
-				<p class="text-sm text-zinc-500 flex items-center gap-1">
+				<p class="text-sm text-zinc-400 flex items-center gap-1">
 					<Icon name="mdi:github" class="w-4 h-4" />
 					<span>:</span>
 					<a

@@ -1,7 +1,8 @@
-# Astro Starter Kit: Minimal
+# Get Started
 
 ```sh
-npm create astro@latest -- --template minimal
+nvm use latest
+npm run dev
 ```
 
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!

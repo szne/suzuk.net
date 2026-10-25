@@ -2,7 +2,7 @@
 title: "What I do"
 date: "2025-09-06"
 type: "work"
-tags: ["React","Vite","Supabase","OpenAI_API"]
+tags: ["React", "Vite", "Supabase", "OpenAI_API"]
 note: "Keep a record of what I did."
 ---
 
